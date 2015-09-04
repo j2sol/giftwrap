@@ -94,6 +94,8 @@ class DockerBuilder(Builder):
             self._paths.append(project_bin_path)
             venv_pip_path = os.path.join(project_bin_path, 'pip')
 
+            commands.append("%s install -U pip" % venv_pip_path)
+
             if project.pip_dependencies:
                 commands.append("%s install %s" % (venv_pip_path,
                                 ' '.join(project.pip_dependencies)))

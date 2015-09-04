@@ -92,9 +92,13 @@ class PackageBuilder(Builder):
             LOG.info("Creating the virtualenv for '%s'", project.name)
             execute(project.venv_command, install_path)
 
+            # update pip in the virtualenv
+            LOG.info("Updating pip in the virtualenv for '%s'", project.name)
+            venv_pip_path = os.path.join(install_path, 'bin/pip')
+            execute("%s install -U pip" % venv_pip_path)
+
             # install into the virtualenv
             LOG.info("Installing '%s' to the virtualenv", project.name)
-            venv_pip_path = os.path.join(install_path, 'bin/pip')
 
             deps = " ".join(project.pip_dependencies)
             execute("%s install %s" % (venv_pip_path, deps))
