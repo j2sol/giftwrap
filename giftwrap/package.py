@@ -17,7 +17,6 @@
 import os
 import platform
 import re
-import requests
 
 from giftwrap.util import execute
 
@@ -37,7 +36,6 @@ class Package(object):
         self.output_dir = output_dir
         self.overwrite = overwrite
         self.dependencies = dependencies
-        self.requests = requests
 
     def _get_platform_target(self):
         current_distro = platform.linux_distribution()[0]
