@@ -1,3 +1,4 @@
+# This is a dockerfile
 FROM ubuntu:precise
 
 RUN apt-get update && \
