@@ -20,7 +20,6 @@ import json
 import logging
 import os
 import re
-import tempfile
 
 from giftwrap.builders import Builder
 
@@ -145,7 +144,7 @@ class DockerBuilder(Builder):
         }
         dockerfile_contents = self._render_dockerfile(template_vars)
 
-        tempdir = tempfile.mkdtemp()
+        tempdir = '/tmp/'
         dockerfile = os.path.join(tempdir, 'Dockerfile')
         with open(dockerfile, "w") as w:
             w.write(dockerfile_contents)
