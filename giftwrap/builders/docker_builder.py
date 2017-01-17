@@ -54,6 +54,7 @@ class DockerBuilder(Builder):
         self.maintainer = 'maintainer@example.com'
         self.envvars = {'DEBIAN_FRONTEND': 'noninteractive'}
         self._commands = []
+        self.tempdir = tempfile.mkdtemp()
         super(DockerBuilder, self).__init__(spec)
 
     def _execute(self, command, cwd=None, exit=0):
